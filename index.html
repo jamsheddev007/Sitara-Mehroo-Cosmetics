@@ -1,1365 +1,1287 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sitara Ashraf | Cosmetics Manufacturing & Branding</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --gold: #b8975a;
-      --gold-light: #d4b483;
-      --gold-pale: #f0e4c8;
-      --gold-dark: #8a6d38;
-      --rose: #c4796a;
-      --rose-light: #e8b4aa;
-      --ivory: #faf7f2;
-      --ivory-deep: #f2ece0;
-      --ink: #18130e;
-      --ink-soft: #3a2e24;
-      --warm-mid: #8c7b68;
-      --warm-light: #b8a898;
-      --border: rgba(184,151,90,0.18);
-      --border-strong: rgba(184,151,90,0.4);
-      --white: #fffdf9;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sitara Ashraf | Luxury Cosmetics Manufacturing & Branding</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   THEME TOKENS
+══════════════════════════════════════════ */
+:root{
+  --gold:#d4a843;
+  --gold2:#f0d078;
+  --gold3:#fff3c0;
+  --rose:#d4847a;
+  --rose2:#f0b8b0;
+  --g1:linear-gradient(135deg,#d4a843,#f0d078);
+}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+/* DARK THEME */
+[data-theme="dark"]{
+  --bg:#0c0905;
+  --bg2:#181208;
+  --bg3:#221a0e;
+  --bg-card:#1e1710;
+  --bg-card2:#281f12;
+  --surface:rgba(255,255,255,0.04);
+  --surface2:rgba(255,255,255,0.08);
+  --text:#f5f0e8;
+  --text2:#c8bfb0;
+  --text3:#8a8070;
+  --text-muted:#6a6058;
+  --border:rgba(212,168,67,0.2);
+  --border2:rgba(212,168,67,0.45);
+  --shadow:rgba(0,0,0,0.6);
+  --nav-bg:rgba(12,9,5,0.95);
+  --hero-bg:#0c0905;
+}
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--ivory);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
+/* LIGHT THEME */
+[data-theme="light"]{
+  --bg:#fdf9f3;
+  --bg2:#f5ede0;
+  --bg3:#ede0cc;
+  --bg-card:#ffffff;
+  --bg-card2:#fdf5e8;
+  --surface:rgba(0,0,0,0.03);
+  --surface2:rgba(0,0,0,0.06);
+  --text:#1a1208;
+  --text2:#3d3020;
+  --text3:#6b5a40;
+  --text-muted:#9a8a70;
+  --border:rgba(180,130,40,0.2);
+  --border2:rgba(180,130,40,0.45);
+  --shadow:rgba(0,0,0,0.12);
+  --nav-bg:rgba(253,249,243,0.96);
+  --hero-bg:#1a1208;
+}
 
-    /* ── GRAIN OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 1000;
-      pointer-events: none;
-      opacity: 0.022;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    }
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--bg);color:var(--text);
+  overflow-x:hidden;
+  transition:background 0.4s,color 0.4s;
+}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),var(--rose));border-radius:4px}
+a{text-decoration:none}
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--ivory); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+/* ══════════════════════════════════════════
+   THEME TOGGLE
+══════════════════════════════════════════ */
+.theme-toggle{
+  position:fixed;top:50%;right:1.5rem;transform:translateY(-50%);
+  z-index:600;display:flex;flex-direction:column;align-items:center;gap:0.5rem;
+}
+.tt-btn{
+  width:42px;height:42px;border-radius:50%;border:1.5px solid var(--border2);
+  background:var(--bg-card);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;transition:all 0.3s;
+  box-shadow:0 4px 16px var(--shadow);
+}
+.tt-btn:hover{background:var(--gold);border-color:var(--gold);transform:scale(1.1)}
+.tt-label{
+  font-size:0.55rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text3);writing-mode:vertical-rl;text-orientation:mixed;
+}
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.4rem 5rem;
-      transition: all 0.5s cubic-bezier(0.25,0.8,0.25,1);
-    }
-    nav.scrolled {
-      background: rgba(250,247,242,0.96);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 5rem;
-      box-shadow: 0 2px 40px rgba(24,19,14,0.06);
-    }
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700; letter-spacing: 0.04em;
-      color: var(--ink); text-decoration: none;
-    }
-    .nav-logo em { font-style: italic; color: var(--gold); }
-    .nav-links { display: flex; gap: 2.6rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.73rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; text-decoration: none;
-      color: var(--ink-soft); transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-cta {
-      font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; text-decoration: none;
-      padding: 0.65rem 1.5rem;
-      border: 1.5px solid var(--gold); color: var(--gold);
-      border-radius: 1px; transition: all 0.3s;
-    }
-    .nav-cta:hover { background: var(--gold); color: var(--white); }
+/* ══════════════════════════════════════════
+   NAV
+══════════════════════════════════════════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 5rem;
+  transition:all 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+nav.scrolled{
+  background:var(--nav-bg);
+  backdrop-filter:blur(28px);
+  padding:0.9rem 5rem;
+  border-bottom:1px solid var(--border);
+  box-shadow:0 4px 32px var(--shadow);
+}
+.nav-logo{
+  font-family:'Italiana',serif;font-size:1.7rem;
+  letter-spacing:0.1em;color:#fff;
+}
+[data-theme="light"] nav:not(.scrolled) .nav-logo{color:#fff}
+[data-theme="light"] nav.scrolled .nav-logo{color:var(--text)}
+[data-theme="light"] nav.scrolled .nav-links a{color:var(--text2)}
+[data-theme="light"] nav.scrolled .nav-links a:hover{color:var(--gold)}
+.nav-logo span{color:var(--gold2)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.75);transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--gold2)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-wa{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.65rem 1.5rem;
+  border:1.5px solid var(--gold);color:var(--gold2);
+  font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
+  border-radius:40px;transition:all 0.35s;background:rgba(212,168,67,0.1);
+}
+.nav-wa:hover{background:var(--gold);color:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(212,168,67,0.4)}
+.nav-wa svg{width:14px;height:14px}
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: grid; grid-template-columns: 1fr 1.1fr;
-      position: relative; overflow: hidden;
-      background: var(--ivory);
-    }
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{
+  min-height:100vh;position:relative;overflow:hidden;
+  display:flex;align-items:center;
+  background:var(--hero-bg);
+}
+.hero-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 60% at 65% 45%,rgba(212,168,67,0.12) 0%,transparent 70%),
+    radial-gradient(ellipse 40% 60% at 90% 90%,rgba(212,132,122,0.1) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 50% at 10% 20%,rgba(212,168,67,0.06) 0%,transparent 60%);
+}
+.hero-ring{
+  position:absolute;border-radius:50%;
+  border:1px solid rgba(212,168,67,0.08);pointer-events:none;
+}
+.hero-ring:nth-child(2){width:800px;height:800px;top:-250px;right:-150px;animation:spin 60s linear infinite}
+.hero-ring:nth-child(3){width:500px;height:500px;bottom:-100px;right:80px;animation:spin 35s linear infinite reverse}
+.hero-ring:nth-child(4){width:300px;height:300px;top:30%;left:-80px;animation:spin 45s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    /* Decorative lines */
-    .hero-deco-line {
-      position: absolute; background: var(--border);
-    }
-    .hero-deco-line-v {
-      width: 1px; top: 0; bottom: 0; left: 52%;
-      z-index: 0;
-    }
-    .hero-deco-line-h {
-      height: 1px; left: 0; right: 0; top: 50%;
-      z-index: 0; opacity: 0.5;
-    }
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:55% 45%;
+  width:100%;max-width:1440px;margin:0 auto;
+  padding:9rem 5rem 8rem;gap:3rem;align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:0.9rem;
+  font-size:0.7rem;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--gold2);margin-bottom:2.2rem;
+  opacity:0;animation:fadeUp 0.9s 0.2s forwards;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1.5px;background:var(--gold2);border-radius:2px}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(3.2rem,6vw,6rem);
+  font-weight:600;line-height:1.06;
+  color:#fff;margin-bottom:1.2rem;
+  opacity:0;animation:fadeUp 0.9s 0.35s forwards;
+}
+.hero-h1 em{
+  font-style:italic;font-weight:400;
+  color:var(--gold2);
+  display:block;padding-left:2rem;
+  text-shadow:0 0 60px rgba(240,208,120,0.3);
+}
+.hero-urdu{
+  font-size:1.4rem;font-weight:400;
+  color:var(--rose2);direction:rtl;
+  margin-bottom:1.8rem;letter-spacing:0.05em;
+  text-shadow:0 2px 12px rgba(212,132,122,0.3);
+  opacity:0;animation:fadeUp 0.9s 0.5s forwards;
+}
+.hero-desc{
+  font-size:1rem;line-height:1.85;
+  color:rgba(255,255,255,0.75);
+  max-width:480px;margin-bottom:3rem;
+  opacity:0;animation:fadeUp 0.9s 0.6s forwards;
+}
+.hero-btns{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  opacity:0;animation:fadeUp 0.9s 0.75s forwards;
+}
+.btn-gold{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:1.05rem 2.4rem;
+  background:var(--g1);
+  color:#1a0e00;font-size:0.78rem;font-weight:800;letter-spacing:0.14em;
+  text-transform:uppercase;border-radius:40px;
+  transition:all 0.35s;
+  box-shadow:0 6px 28px rgba(212,168,67,0.45);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 44px rgba(212,168,67,0.6)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:1.05rem 2rem;
+  border:2px solid rgba(255,255,255,0.3);
+  color:#fff;font-size:0.78rem;font-weight:600;letter-spacing:0.12em;
+  text-transform:uppercase;border-radius:40px;transition:all 0.35s;
+  background:rgba(255,255,255,0.05);
+}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);background:rgba(212,168,67,0.1);transform:translateY(-3px)}
+.btn-ghost svg,.btn-gold svg{width:16px;height:16px;flex-shrink:0}
 
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 9rem 4rem 5rem 6rem;
-      position: relative; z-index: 2;
-    }
+/* hero mosaic */
+.hero-mosaic{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:240px 180px 80px;
+  gap:10px;
+  opacity:0;animation:fadeIn 1.2s 0.4s forwards;
+}
+@keyframes fadeIn{to{opacity:1}}
+.hm{border-radius:12px;overflow:hidden;position:relative}
+.hm img{
+  width:100%;height:100%;object-fit:cover;
+  animation:ken 16s ease-in-out infinite alternate;
+}
+.hm:nth-child(2) img{animation-delay:-4s}
+.hm:nth-child(3) img{animation-delay:-8s}
+.hm:nth-child(4) img{animation-delay:-12s}
+.hm.tall{grid-row:span 2}
+.hm.wide{grid-column:span 2;position:relative}
+@keyframes ken{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.08) translate(-2%,-1%)}}
+.hm-badge{
+  position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);
+  white-space:nowrap;
+  background:var(--g1);
+  color:#1a0e00;padding:0.65rem 1.8rem;border-radius:40px;
+  font-size:0.68rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;
+  box-shadow:0 6px 28px rgba(212,168,67,0.5);
+}
 
-    .hero-eyebrow {
-      display: flex; align-items: center; gap: 1rem;
-      margin-bottom: 2rem;
-      opacity: 0; animation: fadeUp 1s 0.1s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
-    .eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
-    .eyebrow-text {
-      font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em;
-      text-transform: uppercase; color: var(--gold);
-    }
+/* stats strip */
+.hero-strip{
+  position:absolute;bottom:0;left:0;right:0;z-index:3;
+  border-top:1px solid rgba(212,168,67,0.15);
+  opacity:0;animation:fadeUp 0.9s 1.1s forwards;
+}
+.hstrip{display:flex;justify-content:center}
+.hs-inner{display:flex;max-width:1000px;width:100%}
+.hs-item{
+  flex:1;text-align:center;padding:1.5rem 1rem;
+  border-right:1px solid rgba(212,168,67,0.12);
+}
+.hs-item:last-child{border-right:none}
+.hs-num{
+  font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:600;
+  color:var(--gold2);display:block;
+  text-shadow:0 0 30px rgba(240,208,120,0.4);
+}
+.hs-lbl{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
 
-    .hero-script {
-      font-family: 'Pinyon Script', cursive;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      color: var(--gold-light);
-      line-height: 1;
-      margin-bottom: 0.4rem;
-      opacity: 0; animation: fadeUp 1s 0.25s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
+/* ══════════════════════════════════════════
+   MARQUEE
+══════════════════════════════════════════ */
+.mq-wrap{
+  background:linear-gradient(90deg,var(--gold),var(--gold2),var(--gold));
+  overflow:hidden;padding:1rem 0;position:relative;
+}
+.mq-track{
+  display:flex;gap:0;white-space:nowrap;
+  animation:mq 28s linear infinite;
+}
+.mq-item{
+  display:inline-flex;align-items:center;
+  font-size:0.72rem;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;
+  color:rgba(20,12,0,0.85);padding:0 2rem;
+}
+.mq-dot{width:6px;height:6px;border-radius:50%;background:rgba(20,12,0,0.4);margin-left:2rem}
+@keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-    .hero-headline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 4.5vw, 4.5rem);
-      font-weight: 700; line-height: 1.1;
-      color: var(--ink); letter-spacing: -0.01em;
-      margin-bottom: 0.3rem;
-      opacity: 0; animation: fadeUp 1s 0.35s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
-    .hero-headline em { font-style: italic; color: var(--gold); font-weight: 400; }
+/* ══════════════════════════════════════════
+   SHARED SECTION STYLES
+══════════════════════════════════════════ */
+.pill{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  background:rgba(212,168,67,0.12);border:1.5px solid var(--border2);
+  padding:0.45rem 1.1rem;border-radius:40px;margin-bottom:1.5rem;
+}
+.pill span{
+  font-size:0.68rem;font-weight:800;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold);
+}
+.sh2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,3.8vw,3.6rem);
+  font-weight:600;line-height:1.15;
+  color:var(--text);margin-bottom:1.2rem;
+}
+.sh2 em{font-style:italic;font-weight:400;color:var(--gold2)}
+.sbody{font-size:0.97rem;line-height:1.9;color:var(--text2);margin-bottom:1.6rem}
+.sec-sub{font-size:0.95rem;line-height:1.8;color:var(--text2);max-width:540px}
 
-    .hero-urdu {
-      font-size: 1.15rem; color: var(--rose);
-      direction: rtl; margin-bottom: 1.8rem;
-      font-weight: 300; letter-spacing: 0.04em;
-      opacity: 0; animation: fadeUp 1s 0.45s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
+/* ══════════════════════════════════════════
+   ABOUT
+══════════════════════════════════════════ */
+#about{
+  background:var(--bg2);
+  display:grid;grid-template-columns:55% 45%;
+  overflow:hidden;
+}
+.about-l{padding:7rem 5rem;background:var(--bg2)}
+.about-r{position:relative;overflow:hidden;min-height:620px}
+.about-r img{width:100%;height:100%;object-fit:cover}
+.about-r-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,var(--bg2) 0%,transparent 40%),
+             linear-gradient(to top,var(--bg2) 0%,transparent 30%);
+}
+.snote{
+  padding:1.3rem 1.6rem;
+  background:rgba(212,168,67,0.08);
+  border-left:3px solid var(--gold);
+  border-radius:0 8px 8px 0;
+  font-size:0.9rem;line-height:1.8;
+  color:var(--text2);
+  font-style:italic;margin-bottom:2.5rem;
+}
+.afeats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.af{
+  display:flex;align-items:flex-start;gap:0.9rem;
+  padding:1.2rem;
+  background:var(--bg-card);
+  border:1.5px solid var(--border);border-radius:12px;
+  transition:all 0.35s;
+}
+.af:hover{border-color:var(--border2);background:var(--bg-card2);transform:translateY(-3px);box-shadow:0 8px 32px var(--shadow)}
+.af-ic{
+  width:42px;height:42px;border-radius:10px;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(212,168,67,0.25),rgba(212,168,67,0.06));
+  display:flex;align-items:center;justify-content:center;font-size:1.15rem;
+}
+.af h4{font-size:0.85rem;font-weight:700;color:var(--text);margin-bottom:0.25rem}
+.af p{font-size:0.76rem;color:var(--text3);line-height:1.45}
 
-    .hero-sub {
-      font-size: 0.95rem; line-height: 1.85; color: var(--warm-mid);
-      max-width: 420px; margin-bottom: 2.8rem; font-weight: 300;
-      opacity: 0; animation: fadeUp 1s 0.55s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
+/* ══════════════════════════════════════════
+   PRODUCT CATEGORIES
+══════════════════════════════════════════ */
+#categories{background:var(--bg);padding:7rem 5rem}
+.cat-hd{text-align:center;margin-bottom:3.5rem}
+.cat-hd .sh2{color:var(--text)}
+.cat-hd .sec-sub{margin:0 auto;text-align:center;color:var(--text2)}
 
-    .hero-btns {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 1s 0.7s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 1rem 2.2rem;
-      background: var(--ink); color: var(--gold-pale);
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.16em;
-      text-transform: uppercase; text-decoration: none;
-      border-radius: 1px; transition: all 0.4s;
-      border: 1.5px solid var(--ink);
-    }
-    .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--white); transform: translateY(-2px); }
-    .btn-whatsapp {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      padding: 1rem 2rem;
-      background: transparent; color: var(--ink-soft);
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; text-decoration: none;
-      border: 1.5px solid var(--border-strong);
-      border-radius: 1px; transition: all 0.4s;
-    }
-    .btn-whatsapp:hover { border-color: #25D366; color: #25D366; transform: translateY(-2px); }
-    .btn-whatsapp svg, .btn-primary svg { width: 16px; height: 16px; flex-shrink: 0; }
+.cat-tabs{display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:3.5rem}
+.ctab{
+  padding:0.6rem 1.5rem;border-radius:40px;
+  font-size:0.73rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  cursor:pointer;border:1.5px solid var(--border2);
+  color:var(--text2);background:var(--bg-card);
+  transition:all 0.3s;font-family:'DM Sans',sans-serif;
+}
+.ctab.active,.ctab:hover{
+  background:var(--gold);color:#fff;
+  border-color:var(--gold);
+  box-shadow:0 4px 20px rgba(212,168,67,0.4);
+}
 
-    .hero-right {
-      position: relative; overflow: hidden;
-    }
-    .hero-mosaic {
-      position: absolute; inset: 0;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      grid-template-rows: 1.3fr 0.7fr;
-      gap: 4px;
-    }
-    .mosaic-cell { overflow: hidden; position: relative; }
-    .mosaic-cell img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 8s ease;
-      animation: slowZoom 14s ease-in-out infinite alternate;
-    }
-    .mosaic-cell:nth-child(2) img { animation-delay: -4s; }
-    .mosaic-cell:nth-child(3) img { animation-delay: -8s; }
-    .mosaic-cell:nth-child(4) img { animation-delay: -2s; }
-    .mosaic-cell.tall { grid-row: 1 / -1; }
-    @keyframes slowZoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.08); }
-    }
+.cat-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;
+}
+.ccard{
+  border-radius:18px;overflow:hidden;
+  position:relative;cursor:pointer;
+  transition:transform 0.4s cubic-bezier(0.25,0.8,0.25,1),box-shadow 0.4s;
+  box-shadow:0 4px 24px var(--shadow);
+  background:var(--bg-card);
+}
+.ccard:hover{transform:translateY(-10px);box-shadow:0 28px 70px var(--shadow)}
+.ccard-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--bg3)}
+.ccard-img img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.7s cubic-bezier(0.25,0.8,0.25,1);
+  display:block;
+}
+.ccard:hover .ccard-img img{transform:scale(1.1)}
+.ccard-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,7,3,0.92) 0%,rgba(10,7,3,0.2) 55%,transparent 100%);
+}
+.ccard-body{position:absolute;bottom:0;left:0;right:0;padding:1.5rem}
+.ccard-tag{
+  font-size:0.62rem;font-weight:800;letter-spacing:0.22em;
+  text-transform:uppercase;color:var(--gold2);
+  display:block;margin-bottom:0.5rem;
+}
+.ccard-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:600;color:#fff;
+  line-height:1.2;margin-bottom:0.5rem;
+}
+.ccard-desc{font-size:0.78rem;color:rgba(255,255,255,0.75);line-height:1.6}
+.ccard-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  margin-top:1rem;font-size:0.7rem;font-weight:800;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold2);
+  opacity:0;transform:translateY(10px);transition:all 0.35s;
+}
+.ccard:hover .ccard-cta{opacity:1;transform:translateY(0)}
+.ccard-cta svg{width:14px;height:14px}
+.ccard.feat{grid-row:span 2}
+.ccard.feat .ccard-img{aspect-ratio:unset;height:100%}
 
-    /* Gradient fade from left */
-    .hero-right::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to right, var(--ivory) 0%, rgba(250,247,242,0.4) 30%, transparent 60%);
-      z-index: 1; pointer-events: none;
-    }
+/* ══════════════════════════════════════════
+   SERVICES
+══════════════════════════════════════════ */
+#services{background:var(--bg2);padding:7rem 5rem}
+.svc-hd{text-align:center;margin-bottom:4rem}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.svc{
+  padding:2.5rem 2rem;
+  background:var(--bg-card);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  position:relative;overflow:hidden;transition:all 0.4s;
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--g1);
+  transform:scaleX(0);transform-origin:center;transition:transform 0.5s;
+}
+.svc:hover{
+  border-color:var(--border2);
+  background:var(--bg-card2);
+  transform:translateY(-5px);
+  box-shadow:0 20px 60px var(--shadow);
+}
+.svc:hover::before{transform:scaleX(1)}
+.svc-n{
+  font-family:'Playfair Display',serif;
+  font-size:5rem;font-weight:600;
+  color:rgba(212,168,67,0.08);
+  line-height:1;position:absolute;top:1rem;right:1.5rem;
+}
+.svc-ico{font-size:2rem;margin-bottom:1.2rem}
+.svc h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;font-weight:600;
+  color:var(--text);margin-bottom:0.9rem;
+}
+.svc p{font-size:0.9rem;line-height:1.8;color:var(--text2)}
+.chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.3rem}
+.chip{
+  font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.32rem 0.9rem;border-radius:20px;
+  background:rgba(212,168,67,0.12);
+  color:var(--gold);border:1px solid var(--border);
+}
 
-    .hero-stats {
-      position: absolute; bottom: 3.5rem; left: 6rem; z-index: 3;
-      display: flex; gap: 2.5rem;
-      opacity: 0; animation: fadeUp 1s 0.9s cubic-bezier(0.25,0.8,0.25,1) forwards;
-    }
-    .stat-item { position: relative; padding-left: 1rem; }
-    .stat-item::before {
-      content: ''; position: absolute; left: 0; top: 50%;
-      transform: translateY(-50%); width: 1px; height: 60%;
-      background: var(--gold);
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--ink); display: block;
-      line-height: 1;
-    }
-    .stat-label {
-      font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--warm-mid); display: block; margin-top: 0.2rem;
-    }
+/* ══════════════════════════════════════════
+   PROCESS
+══════════════════════════════════════════ */
+#process{background:var(--bg);padding:7rem 5rem;text-align:center}
+.proc-row{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;margin-top:4rem;position:relative;
+}
+.proc-row::before{
+  content:'';position:absolute;top:27px;left:14%;right:14%;height:1.5px;
+  background:linear-gradient(90deg,transparent,var(--gold2),var(--gold2),transparent);
+  opacity:0.3;
+}
+.pr h4{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:600;
+  color:var(--text);margin-bottom:0.7rem;
+}
+.pr p{font-size:0.88rem;line-height:1.8;color:var(--text2)}
+.pr-c{
+  width:54px;height:54px;border-radius:50%;margin:0 auto 1.5rem;
+  background:var(--g1);
+  color:#1a0e00;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.78rem;font-weight:800;letter-spacing:0.05em;
+  position:relative;z-index:1;
+  box-shadow:0 6px 24px rgba(212,168,67,0.45);
+  transition:transform 0.3s;
+}
+.pr:hover .pr-c{transform:scale(1.15) rotate(-8deg)}
 
-    /* ── SECTION COMMON ── */
-    section { padding: 6rem 5rem; }
-    .sec-eyebrow {
-      display: flex; align-items: center; gap: 0.8rem;
-      margin-bottom: 1rem;
-    }
-    .sec-eyebrow-line { width: 28px; height: 1px; background: var(--gold); }
-    .sec-eyebrow-text {
-      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.28em;
-      text-transform: uppercase; color: var(--gold);
-    }
-    .sec-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700; line-height: 1.15; color: var(--ink);
-      letter-spacing: -0.01em; margin-bottom: 1rem;
-    }
-    .sec-title em { font-style: italic; color: var(--gold); font-weight: 400; }
-    .sec-sub {
-      font-size: 0.93rem; line-height: 1.85; color: var(--warm-mid);
-      font-weight: 300;
-    }
+/* ══════════════════════════════════════════
+   AUDIENCE
+══════════════════════════════════════════ */
+#audience{background:var(--bg2);padding:7rem 5rem}
+.aud-hd .sec-sub{color:var(--text2)}
+.aud-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:3.5rem}
+.acard{
+  padding:2.2rem;
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  background:var(--bg-card);
+  transition:all 0.4s;position:relative;overflow:hidden;
+}
+.acard::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--rose),transparent);
+  transform:scaleX(0);transition:transform 0.4s;
+}
+.acard:hover{transform:translateY(-5px);border-color:rgba(212,132,122,0.4);box-shadow:0 16px 48px var(--shadow)}
+.acard:hover::after{transform:scaleX(1)}
+.aic{font-size:2.2rem;margin-bottom:1rem}
+.acard h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;font-weight:600;
+  color:var(--text);margin-bottom:0.6rem;
+}
+.acard p{font-size:0.88rem;line-height:1.75;color:var(--text2)}
 
-    /* ── MARQUEE ── */
-    .marquee-wrap {
-      background: var(--ink); padding: 1rem 0; overflow: hidden;
-      position: relative;
-    }
-    .marquee-track {
-      display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 28s linear infinite;
-    }
-    .marquee-item {
-      display: inline-flex; align-items: center; gap: 1.2rem;
-      padding: 0 2.5rem;
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--gold-light);
-    }
-    .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+/* ══════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════ */
+#testimonials{background:var(--bg3);padding:7rem 5rem}
+.t-hd{text-align:center;margin-bottom:3.5rem}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.tc{
+  padding:2.2rem;
+  background:var(--bg-card);
+  border:1.5px solid var(--border);
+  border-radius:18px;transition:all 0.4s;
+}
+.tc:hover{border-color:var(--border2);transform:translateY(-5px);box-shadow:0 20px 56px var(--shadow)}
+.tc-stars{color:var(--gold);font-size:1rem;letter-spacing:0.15em;margin-bottom:1.2rem}
+.tc-text{
+  font-size:0.92rem;line-height:1.85;
+  color:var(--text2);font-style:italic;margin-bottom:1.5rem;
+}
+.tc-auth{display:flex;align-items:center;gap:0.9rem}
+.tc-av{
+  width:44px;height:44px;border-radius:50%;overflow:hidden;
+  border:2.5px solid var(--border2);flex-shrink:0;
+}
+.tc-av img{width:100%;height:100%;object-fit:cover}
+.tc-name{font-size:0.85rem;font-weight:700;color:var(--text)}
+.tc-role{font-size:0.7rem;color:var(--gold);letter-spacing:0.1em;font-weight:600}
 
-    /* ── ABOUT ── */
-    #about {
-      background: var(--ink);
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
-    }
-    #about .sec-title { color: var(--ivory); }
-    #about .sec-eyebrow-text { color: var(--gold-light); }
-    #about .sec-eyebrow-line { background: var(--gold-light); }
-    #about .sec-sub { color: rgba(250,247,242,0.55); }
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contact{background:var(--bg);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.ct-l{
+  padding:7rem 5rem;
+  background:var(--hero-bg);
+  position:relative;overflow:hidden;
+}
+.ct-l::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(212,168,67,0.1),transparent 70%);
+}
+.ct-l .sh2{color:#fff}
+.ct-l .sec-sub{color:rgba(255,255,255,0.65);max-width:none;text-align:left}
+.ct-rows{margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem}
+.crow{
+  display:flex;align-items:center;gap:1rem;
+  padding:1.2rem 1.5rem;
+  border:1.5px solid rgba(212,168,67,0.25);
+  border-radius:14px;
+  background:rgba(255,255,255,0.04);
+  transition:all 0.35s;
+}
+.crow:hover{border-color:var(--gold);background:rgba(212,168,67,0.1);transform:translateX(5px)}
+.crow-ic{
+  width:46px;height:46px;border-radius:12px;
+  background:linear-gradient(135deg,rgba(212,168,67,0.25),rgba(212,168,67,0.06));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;flex-shrink:0;
+}
+.crow-t span{display:block;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:0.18rem;font-weight:700}
+.crow-t strong{font-size:0.95rem;font-weight:600;color:#fff}
+.ct-urdu{margin-top:2rem;font-size:1.15rem;direction:rtl;color:rgba(255,255,255,0.5);letter-spacing:0.04em}
 
-    .about-body { color: rgba(250,247,242,0.55); font-size: 0.9rem; line-height: 1.9; font-weight: 300; margin-top: 1rem; }
-    .about-body strong { color: var(--gold-light); font-weight: 500; }
+.ct-r{
+  padding:7rem 5rem;background:var(--bg2);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;gap:2rem;
+}
+.wa-box{
+  padding:3.2rem 2.8rem;
+  background:linear-gradient(135deg,#102518 0%,#0b1a10 100%);
+  border-radius:26px;width:100%;max-width:400px;
+  box-shadow:0 24px 70px rgba(37,211,102,0.25);
+  position:relative;overflow:hidden;transition:transform 0.4s,box-shadow 0.4s;
+}
+.wa-box:hover{transform:translateY(-8px);box-shadow:0 36px 90px rgba(37,211,102,0.35)}
+.wa-box::before{
+  content:'';position:absolute;top:-60%;right:-30%;
+  width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,211,102,0.14),transparent 70%);
+}
+.wa-logo{
+  width:76px;height:76px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.6rem;
+  box-shadow:0 10px 40px rgba(37,211,102,0.5);
+}
+.wa-logo svg{width:40px;height:40px}
+.wa-box h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:600;
+  color:#fff;margin-bottom:0.7rem;
+}
+.wa-box p{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:2.2rem}
+.wa-btn-inner{
+  display:block;padding:1.05rem 2rem;
+  background:linear-gradient(135deg,#25D366,#1da851);
+  color:#fff;font-size:0.8rem;font-weight:800;
+  letter-spacing:0.14em;text-transform:uppercase;
+  border-radius:40px;
+  box-shadow:0 6px 24px rgba(37,211,102,0.45);
+  transition:all 0.35s;
+}
+.wa-box:hover .wa-btn-inner{box-shadow:0 12px 44px rgba(37,211,102,0.65)}
+.wa-num{font-size:0.82rem;color:rgba(255,255,255,0.3);margin-top:1.2rem;letter-spacing:0.1em}
+.email-link{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  font-size:0.88rem;font-weight:500;color:var(--text2);transition:color 0.3s;
+}
+.email-link:hover{color:var(--gold)}
+.email-link svg{width:18px;height:18px;color:var(--gold)}
 
-    .about-pillars {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-      margin-top: 2.5rem;
-      border: 1px solid rgba(184,151,90,0.15);
-    }
-    .pillar {
-      padding: 1.4rem 1.2rem;
-      border: 1px solid rgba(184,151,90,0.1);
-      transition: background 0.3s;
-    }
-    .pillar:hover { background: rgba(184,151,90,0.06); }
-    .pillar-icon { font-size: 1.4rem; margin-bottom: 0.6rem; }
-    .pillar h4 {
-      font-size: 0.78rem; font-weight: 500; color: var(--ivory);
-      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.25rem;
-    }
-    .pillar p { font-size: 0.73rem; color: rgba(250,247,242,0.4); line-height: 1.6; }
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{
+  background:var(--hero-bg);
+  border-top:1px solid rgba(212,168,67,0.15);
+  padding:2.5rem 5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.fbrand{font-family:'Italiana',serif;font-size:1.5rem;color:rgba(255,255,255,0.8)}
+.fbrand span{color:var(--gold2)}
+footer p{font-size:0.72rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em}
+.flinks{display:flex;gap:2rem}
+.flinks a{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);transition:color 0.3s}
+.flinks a:hover{color:var(--gold2)}
 
-    .about-img-wrap { position: relative; }
-    .about-img-frame {
-      position: relative;
-      border-radius: 2px; overflow: hidden;
-    }
-    .about-img-frame::before {
-      content: ''; position: absolute; top: -12px; right: -12px;
-      width: 100%; height: 100%;
-      border: 1.5px solid var(--gold); border-radius: 2px;
-      z-index: -1; pointer-events: none;
-    }
-    .about-img-frame img {
-      width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block;
-    }
-    .about-badge {
-      position: absolute; bottom: 2.5rem; left: -1.5rem;
-      background: var(--gold);
-      padding: 1.2rem 1.6rem; border-radius: 2px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
-    }
-    .about-badge strong {
-      display: block; font-family: 'Playfair Display', serif;
-      font-size: 2rem; font-weight: 700; color: var(--white); line-height: 1;
-    }
-    .about-badge span {
-      font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85);
-    }
+/* ══════════════════════════════════════════
+   FLOATING WA
+══════════════════════════════════════════ */
+.fwa{
+  position:fixed;bottom:2rem;right:2rem;z-index:400;
+  width:62px;height:62px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 28px rgba(37,211,102,0.55);
+  animation:wap 2.8s ease-in-out infinite;
+  transition:transform 0.3s;
+}
+.fwa:hover{transform:scale(1.12)}
+.fwa svg{width:32px;height:32px}
+@keyframes wap{
+  0%,100%{box-shadow:0 6px 28px rgba(37,211,102,0.55)}
+  50%{box-shadow:0 6px 56px rgba(37,211,102,0.85),0 0 0 14px rgba(37,211,102,0.08)}
+}
 
-    /* ── SERVICES ── */
-    #services { background: var(--ivory); }
-    .services-top {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 3.5rem;
-    }
-    .services-top-left { max-width: 480px; }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
-    .service-card {
-      background: var(--white);
-      padding: 2.4rem 2rem 2rem;
-      transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1);
-      position: relative; overflow: hidden;
-    }
-    .service-card:hover { background: var(--ink); z-index: 1; transform: scale(1.02); }
-    .service-card:hover .service-card-num { color: rgba(184,151,90,0.12); }
-    .service-card:hover h3 { color: var(--ivory); }
-    .service-card:hover p { color: rgba(250,247,242,0.5); }
-    .service-card:hover .service-tag { background: rgba(184,151,90,0.15); color: var(--gold-light); }
+/* ══════════════════════════════════════════
+   REVEAL ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}.d6{transition-delay:.6s}
 
-    .service-card-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 4rem; font-weight: 700;
-      color: rgba(184,151,90,0.1); line-height: 1;
-      position: absolute; top: 1.5rem; right: 1.5rem;
-      transition: color 0.4s;
-    }
-    .service-icon { font-size: 1.8rem; margin-bottom: 1rem; }
-    .service-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem; font-weight: 700; color: var(--ink);
-      margin-bottom: 0.7rem; line-height: 1.25;
-      transition: color 0.4s;
-    }
-    .service-card p {
-      font-size: 0.85rem; line-height: 1.8; color: var(--warm-mid);
-      font-weight: 300; transition: color 0.4s;
-    }
-    .service-tags {
-      display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1.2rem;
-    }
-    .service-tag {
-      font-size: 0.6rem; font-weight: 500; letter-spacing: 0.1em;
-      text-transform: uppercase; padding: 0.28rem 0.65rem;
-      background: var(--ivory-deep); color: var(--gold-dark);
-      border-radius: 1px; transition: all 0.4s;
-    }
-
-    /* ── PRODUCT CATEGORIES ── */
-    #products { background: var(--ink); }
-    #products .sec-title { color: var(--ivory); }
-    #products .sec-sub { color: rgba(250,247,242,0.5); }
-    #products .sec-eyebrow-text { color: var(--gold-light); }
-    #products .sec-eyebrow-line { background: var(--gold-light); }
-
-    .products-header { margin-bottom: 3.5rem; max-width: 520px; }
-
-    .product-categories-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(184,151,90,0.12);
-      border: 1px solid rgba(184,151,90,0.12);
-      margin-bottom: 4rem;
-    }
-
-    .cat-card {
-      background: rgba(255,255,255,0.025);
-      padding: 2rem 1.6rem 1.8rem;
-      transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1);
-      cursor: pointer; position: relative; overflow: hidden;
-    }
-    .cat-card::before {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 2px; background: var(--gold);
-      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
-    }
-    .cat-card:hover { background: rgba(184,151,90,0.08); transform: translateY(-4px); z-index: 1; }
-    .cat-card:hover::before { transform: scaleX(1); }
-
-    .cat-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-    .cat-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--ivory);
-      margin-bottom: 0.5rem; line-height: 1.2;
-    }
-    .cat-desc {
-      font-size: 0.78rem; color: rgba(250,247,242,0.4); line-height: 1.65;
-      font-weight: 300; margin-bottom: 1.2rem;
-    }
-    .cat-items {
-      display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.2rem;
-    }
-    .cat-item-tag {
-      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.08em;
-      text-transform: uppercase; padding: 0.2rem 0.5rem;
-      background: rgba(184,151,90,0.12); color: var(--gold-light);
-      border-radius: 1px;
-    }
-    .cat-moq {
-      display: flex; align-items: center; gap: 0.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(184,151,90,0.15);
-    }
-    .moq-label {
-      font-size: 0.58rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(250,247,242,0.3);
-    }
-    .moq-value {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700; color: var(--gold);
-    }
-    .moq-unit {
-      font-size: 0.7rem; color: rgba(250,247,242,0.35); font-weight: 300;
-    }
-
-    /* MOQ TABLE */
-    .moq-section {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(184,151,90,0.15);
-      border-radius: 2px; padding: 2.5rem;
-    }
-    .moq-section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem; font-weight: 700; color: var(--ivory);
-      margin-bottom: 0.4rem;
-    }
-    .moq-section-sub {
-      font-size: 0.82rem; color: rgba(250,247,242,0.4); font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    .moq-table { width: 100%; border-collapse: collapse; }
-    .moq-table th {
-      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold);
-      padding: 0.8rem 1rem; text-align: left;
-      border-bottom: 1px solid rgba(184,151,90,0.2);
-    }
-    .moq-table td {
-      font-size: 0.85rem; color: rgba(250,247,242,0.65); font-weight: 300;
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid rgba(184,151,90,0.08);
-    }
-    .moq-table tr:last-child td { border-bottom: none; }
-    .moq-table tr:hover td { color: rgba(250,247,242,0.9); background: rgba(184,151,90,0.04); }
-    .moq-highlight { color: var(--gold-light) !important; font-weight: 500 !important; }
-    .moq-badge {
-      display: inline-block; padding: 0.15rem 0.5rem;
-      background: rgba(184,151,90,0.15); color: var(--gold-light) !important;
-      border-radius: 1px;
-      font-size: 0.72rem !important; font-weight: 500 !important;
-    }
-
-    /* ── AUDIENCE ── */
-    #audience { background: var(--ivory-deep); }
-    .audience-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 3rem;
-    }
-    .audience-card {
-      padding: 2rem 1.8rem;
-      background: var(--white);
-      border: 1px solid var(--border); border-radius: 2px;
-      transition: all 0.4s;
-    }
-    .audience-card:hover { border-color: var(--gold-light); transform: translateY(-6px); box-shadow: 0 20px 60px rgba(184,151,90,0.12); }
-    .audience-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-    .audience-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 700; color: var(--ink);
-      margin-bottom: 0.55rem;
-    }
-    .audience-card p { font-size: 0.85rem; line-height: 1.75; color: var(--warm-mid); font-weight: 300; }
-
-    /* ── PROCESS ── */
-    #process { background: var(--white); text-align: center; }
-    .process-steps {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 2rem; margin-top: 3.5rem;
-      position: relative;
-    }
-    .process-line {
-      position: absolute; top: 28px; left: 13%; right: 13%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), var(--gold), transparent);
-      pointer-events: none;
-    }
-    .process-step { position: relative; }
-    .step-circle {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--white); color: var(--gold);
-      border: 1.5px solid var(--gold);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700;
-      margin: 0 auto 1.4rem;
-      position: relative; z-index: 1;
-      transition: all 0.3s;
-    }
-    .process-step:hover .step-circle {
-      background: var(--gold); color: var(--white); transform: scale(1.1);
-    }
-    .process-step h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--ink);
-      margin-bottom: 0.5rem;
-    }
-    .process-step p { font-size: 0.83rem; line-height: 1.7; color: var(--warm-mid); font-weight: 300; }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: linear-gradient(160deg, #18130e 0%, #2d2018 50%, #18130e 100%);
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; align-items: center;
-    }
-    #contact .sec-title { color: var(--ivory); }
-    #contact .sec-sub { color: rgba(250,247,242,0.5); }
-    #contact .sec-eyebrow-text { color: var(--gold-light); }
-    #contact .sec-eyebrow-line { background: var(--gold-light); }
-
-    .contact-cards { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .contact-card {
-      display: flex; align-items: center; gap: 1.2rem;
-      text-decoration: none; color: inherit;
-      padding: 1.2rem 1.4rem;
-      border: 1px solid rgba(184,151,90,0.15); border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .contact-card:hover { border-color: var(--gold); background: rgba(184,151,90,0.06); }
-    .contact-card-icon {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(184,151,90,0.12);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-    }
-    .contact-card-text span {
-      display: block; font-size: 0.6rem; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 0.15rem;
-    }
-    .contact-card-text strong { font-size: 0.9rem; font-weight: 400; color: var(--ivory); }
-    .contact-urdu {
-      margin-top: 1.8rem;
-      font-size: 1.05rem; color: rgba(250,247,242,0.35);
-      direction: rtl; font-weight: 300; letter-spacing: 0.03em;
-    }
-
-    .contact-right { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .wa-cta {
-      display: inline-flex; flex-direction: column; align-items: center;
-      gap: 0.8rem; text-decoration: none;
-      padding: 3rem 3.5rem;
-      background: linear-gradient(135deg, #25D366 0%, #128C4F 100%);
-      border-radius: 4px;
-      box-shadow: 0 24px 80px rgba(37,211,102,0.25);
-      transition: all 0.4s cubic-bezier(0.25,0.8,0.25,1);
-      position: relative; overflow: hidden;
-      width: 100%;
-    }
-    .wa-cta::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18), transparent 60%);
-    }
-    .wa-cta:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 36px 100px rgba(37,211,102,0.35); }
-    .wa-cta svg { width: 56px; height: 56px; }
-    .wa-cta strong {
-      font-size: 0.85rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; color: #fff;
-    }
-    .wa-cta small { font-size: 0.76rem; color: rgba(255,255,255,0.75); }
-
-    .contact-note { font-size: 0.72rem; color: rgba(250,247,242,0.25); letter-spacing: 0.08em; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--ink);
-      border-top: 1px solid rgba(184,151,90,0.1);
-      padding: 2rem 5rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--ivory);
-    }
-    .footer-logo em { font-style: italic; color: var(--gold); font-weight: 400; }
-    footer p { font-size: 0.7rem; color: rgba(250,247,242,0.25); letter-spacing: 0.08em; }
-    .footer-links { display: flex; gap: 1.8rem; }
-    .footer-links a {
-      font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none; color: rgba(250,247,242,0.35);
-      transition: color 0.3s;
-    }
-    .footer-links a:hover { color: var(--gold); }
-
-    /* FLOATING WA */
-    .float-wa {
-      position: fixed; bottom: 2rem; right: 2rem; z-index: 600;
-      width: 58px; height: 58px; border-radius: 50%;
-      background: #25D366; color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
-      text-decoration: none;
-      animation: pulseWa 2.5s ease-in-out infinite;
-    }
-    .float-wa svg { width: 28px; height: 28px; }
-    @keyframes pulseWa {
-      0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
-      50% { box-shadow: 0 6px 48px rgba(37,211,102,0.75), 0 0 0 8px rgba(37,211,102,0.08); }
-    }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 0; transform: translateY(28px);
-      transition: opacity 0.75s cubic-bezier(0.25,0.8,0.25,1), transform 0.75s cubic-bezier(0.25,0.8,0.25,1);
-    }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
-    .reveal-delay-7 { transition-delay: 0.7s; }
-    .reveal-delay-8 { transition-delay: 0.8s; }
-
-    /* RESPONSIVE */
-    @media (max-width: 1100px) {
-      .product-categories-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 900px) {
-      nav { padding: 1rem 2rem; }
-      nav.scrolled { padding: 0.8rem 2rem; }
-      .nav-links { display: none; }
-      #hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 7rem 2rem 3rem; }
-      .hero-right { display: none; }
-      .hero-stats { left: 2rem; bottom: 2rem; }
-      #about { grid-template-columns: 1fr; padding: 4rem 2rem; }
-      .about-pillars { grid-template-columns: 1fr 1fr; }
-      section { padding: 4rem 2rem; }
-      .services-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
-      .services-top { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
-      .audience-grid { grid-template-columns: 1fr 1fr; }
-      .process-steps { grid-template-columns: 1fr 1fr; }
-      .process-line { display: none; }
-      #contact { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
-      footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
-      .product-categories-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 560px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .audience-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
-      .product-categories-grid { grid-template-columns: 1fr; }
-      .about-pillars { grid-template-columns: 1fr; }
-    }
-  </style>
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1200px){
+  nav,nav.scrolled{padding-left:2.5rem;padding-right:2.5rem}
+  .hero-inner{padding:8rem 2.5rem 7rem;gap:2rem}
+  #about{grid-template-columns:1fr}
+  .about-r{min-height:420px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .ccard.feat{grid-row:span 1}.ccard.feat .ccard-img{aspect-ratio:3/4;height:auto}
+  #categories,#services,#process,#audience,#testimonials,#contact .ct-l,#contact .ct-r{padding:5rem 2.5rem}
+  .about-l{padding:5rem 2.5rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .proc-row{grid-template-columns:1fr 1fr}.proc-row::before{display:none}
+  .aud-grid{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr 1fr}
+  #contact{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:1rem;padding:2rem;text-align:center}
+}
+@media(max-width:768px){
+  .nav-links,.nav-wa{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-mosaic{display:none}
+  .hero-strip{position:relative}.hs-inner{flex-wrap:wrap}
+  .hs-item{min-width:50%;border-bottom:1px solid rgba(212,168,67,0.1)}
+  .cat-grid,.svc-grid,.aud-grid,.tgrid{grid-template-columns:1fr}
+  .proc-row{grid-template-columns:1fr 1fr}
+  .afeats{grid-template-columns:1fr}
+  #categories,#services,#process,#audience,#testimonials{padding:4rem 1.5rem}
+  .about-l,.ct-l,.ct-r{padding:4rem 1.5rem}
+  .theme-toggle{right:0.8rem}
+}
+</style>
 </head>
 <body>
 
+<!-- THEME TOGGLE -->
+<div class="theme-toggle">
+  <button class="tt-btn" id="themeBtn" title="Toggle theme">🌙</button>
+</div>
+
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="#" class="nav-logo">Sitara <em>Ashraf</em></a>
+<nav id="nav">
+  <a href="#" class="nav-logo">Sitara <span>Ashraf</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#categories">Products</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#audience">Clients</a></li>
+    <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="https://wa.me/923289875672" class="nav-cta" target="_blank">WhatsApp</a>
+  <div class="nav-right">
+    <a href="https://wa.me/923289875672?text=Hello%20Sitara!%20I%20am%20interested%20in%20your%20cosmetics%20services." class="nav-wa" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/></svg>
+      WhatsApp
+    </a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-deco-line hero-deco-line-v"></div>
-
-  <div class="hero-left">
-    <div class="hero-eyebrow">
-      <span class="eyebrow-line"></span>
-      <span class="eyebrow-text">Cosmetics Manufacturing & Branding</span>
+  <div class="hero-glow"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Cosmetics Manufacturing &amp; Branding</div>
+      <h1 class="hero-h1">
+        Your Beauty Brand
+        <em>Starts Here.</em>
+      </h1>
+      <p class="hero-urdu">آپ کا خواب — ہماری ذمہ داری ✨</p>
+      <p class="hero-desc">From custom formulations and private labeling to bulk wholesale and full branding — Sitara Ashraf delivers complete cosmetics solutions crafted to your vision and budget.</p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn-gold">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Explore Products
+        </a>
+        <a href="https://wa.me/923289875672?text=Hello%20Sitara!%20I%20am%20interested%20in%20your%20cosmetics%20services." class="btn-ghost" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
     </div>
-
-    <div class="hero-script">Your Vision,</div>
-
-    <h1 class="hero-headline">
-      Beautifully <em>Crafted</em><br>for Your Brand
-    </h1>
-
-    <p class="hero-urdu">آپ کا خواب، ہماری ذمہ داری ✨</p>
-
-    <p class="hero-sub">
-      Custom formulations, private labeling, bulk wholesale, and complete branding —
-      Sitara Ashraf delivers end-to-end cosmetics solutions from concept to shelf, tailored to your vision and budget.
-    </p>
-
-    <div class="hero-btns">
-      <a href="#services" class="btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        Our Services
-      </a>
-      <a href="https://wa.me/923289875672" class="btn-whatsapp" target="_blank">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/></svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-  </div>
-
-  <div class="hero-right">
     <div class="hero-mosaic">
-      <div class="mosaic-cell tall">
-        <img src="https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=600&auto=format&fit=crop" alt="Luxury cosmetics">
+      <div class="hm tall">
+        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&h=700&fit=crop&auto=format&q=85" alt="Skincare serums">
       </div>
-      <div class="mosaic-cell">
-        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&auto=format&fit=crop" alt="Skincare serums">
+      <div class="hm">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=300&fit=crop&auto=format&q=85" alt="Face cream">
       </div>
-      <div class="mosaic-cell">
-        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&auto=format&fit=crop" alt="Makeup products">
+      <div class="hm">
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500&h=300&fit=crop&auto=format&q=85" alt="Cosmetics bottles">
+      </div>
+      <div class="hm wide">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=700&h=200&fit=crop&auto=format&q=85" alt="Beauty products">
+        <div class="hm-badge">Private Label Ready ✦ Bulk Orders</div>
       </div>
     </div>
   </div>
-
-  <div class="hero-stats">
-    <div class="stat-item">
-      <span class="stat-num">500+</span>
-      <span class="stat-label">Products Made</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">5+</span>
-      <span class="stat-label">Years Experience</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">100%</span>
-      <span class="stat-label">Custom Solutions</span>
+  <div class="hero-strip">
+    <div class="hstrip">
+      <div class="hs-inner">
+        <div class="hs-item"><span class="hs-num">500+</span><span class="hs-lbl">Products Made</span></div>
+        <div class="hs-item"><span class="hs-num">5+</span><span class="hs-lbl">Years Experience</span></div>
+        <div class="hs-item"><span class="hs-num">100%</span><span class="hs-lbl">Custom Solutions</span></div>
+        <div class="hs-item"><span class="hs-num">6</span><span class="hs-lbl">Service Types</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item"><span class="marquee-dot"></span>Custom Formulations</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Private Labeling</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Bulk Manufacturing</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Brand Development</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Packaging Solutions</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Wholesale Rates</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Serums & Creams</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Hair Care</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Nail Paints</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Custom Formulations</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Private Labeling</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Bulk Manufacturing</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Brand Development</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Packaging Solutions</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Wholesale Rates</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Serums & Creams</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Hair Care</span>
-    <span class="marquee-item"><span class="marquee-dot"></span>Nail Paints</span>
+<div class="mq-wrap">
+  <div class="mq-track">
+    <span class="mq-item">Skin Care<span class="mq-dot"></span></span>
+    <span class="mq-item">Private Labeling<span class="mq-dot"></span></span>
+    <span class="mq-item">Hair Care<span class="mq-dot"></span></span>
+    <span class="mq-item">Bulk Orders<span class="mq-dot"></span></span>
+    <span class="mq-item">Nail Paints<span class="mq-dot"></span></span>
+    <span class="mq-item">Custom Formulas<span class="mq-dot"></span></span>
+    <span class="mq-item">Face Serums<span class="mq-dot"></span></span>
+    <span class="mq-item">Branding<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Body Lotions<span class="mq-dot"></span></span>
+    <span class="mq-item">Face Creams<span class="mq-dot"></span></span>
+    <span class="mq-item">Wholesale<span class="mq-dot"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="mq-item">Skin Care<span class="mq-dot"></span></span>
+    <span class="mq-item">Private Labeling<span class="mq-dot"></span></span>
+    <span class="mq-item">Hair Care<span class="mq-dot"></span></span>
+    <span class="mq-item">Bulk Orders<span class="mq-dot"></span></span>
+    <span class="mq-item">Nail Paints<span class="mq-dot"></span></span>
+    <span class="mq-item">Custom Formulas<span class="mq-dot"></span></span>
+    <span class="mq-item">Face Serums<span class="mq-dot"></span></span>
+    <span class="mq-item">Branding<span class="mq-dot"></span></span>
+    <span class="mq-item">Packaging<span class="mq-dot"></span></span>
+    <span class="mq-item">Body Lotions<span class="mq-dot"></span></span>
+    <span class="mq-item">Face Creams<span class="mq-dot"></span></span>
+    <span class="mq-item">Wholesale<span class="mq-dot"></span></span>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div>
-    <div class="sec-eyebrow reveal">
-      <span class="sec-eyebrow-line"></span>
-      <span class="sec-eyebrow-text">About Me</span>
-    </div>
-    <h2 class="sec-title reveal reveal-delay-1">Your Trusted Partner<br>in <em>Beauty Business</em></h2>
-    <p class="sec-sub reveal reveal-delay-2">
-      My name is <strong>Sitara Ashraf</strong>. I provide comprehensive services in cosmetics, beauty, and personal care products — from formulation to final packaging.
-    </p>
-    <p class="about-body reveal reveal-delay-3">
-      All products are prepared according to the client's <strong>demand, budget, and desired quality</strong>. Before finalizing any order, we clearly discuss the product, packaging, quantity, rate, and delivery timeline. Whether you're starting a brand from scratch or scaling an existing one, I offer full support every step of the way.
-    </p>
-    <div class="about-pillars reveal reveal-delay-4">
-      <div class="pillar">
-        <div class="pillar-icon">⚗️</div>
-        <h4>Custom Formulas</h4>
-        <p>Tailored formulations for your exact needs</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">📦</div>
-        <h4>Full Packaging</h4>
-        <p>Bottles, jars, labels & branded packaging</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">🏷️</div>
-        <h4>Private Labeling</h4>
-        <p>Launch under your own brand name</p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-icon">💰</div>
-        <h4>Budget Friendly</h4>
-        <p>Wholesale & bulk rates for all sizes</p>
-      </div>
+  <div class="about-l">
+    <div class="pill reveal"><span>About Sitara Ashraf</span></div>
+    <h2 class="sh2 reveal d1">Your Trusted Partner in<br><em>Cosmetics Business</em></h2>
+    <p class="sbody reveal d2">My name is <strong style="color:var(--gold2)">Sitara Ashraf</strong>. I provide comprehensive services in cosmetics, beauty, and personal care products. Whether you're launching a brand from scratch or scaling an existing business, I offer full support — from product formulation to final packaged delivery.</p>
+    <div class="snote reveal d3">"All products are crafted to the client's exact demand, budget, and quality level. Before finalizing any order, we clearly discuss the product type, packaging, quantity, rate, and delivery timeline — no surprises."</div>
+    <div class="afeats reveal d3">
+      <div class="af"><div class="af-ic">⚗️</div><div><h4>Custom Formulas</h4><p>Tailored precisely for your needs</p></div></div>
+      <div class="af"><div class="af-ic">📦</div><div><h4>Full Packaging</h4><p>Bottles, jars & branded labels</p></div></div>
+      <div class="af"><div class="af-ic">🏷️</div><div><h4>Private Labeling</h4><p>Your brand name, your identity</p></div></div>
+      <div class="af"><div class="af-ic">💰</div><div><h4>Budget Friendly</h4><p>Wholesale & bulk pricing always</p></div></div>
     </div>
   </div>
-  <div class="about-img-wrap reveal reveal-delay-2">
-    <div class="about-img-frame">
-      <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&auto=format&fit=crop" alt="Sitara Ashraf Cosmetics">
+  <div class="about-r reveal d2">
+    <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=800&h=1000&fit=crop&auto=format&q=85" alt="Cosmetics products">
+    <div class="about-r-ov"></div>
+  </div>
+</section>
+
+<!-- PRODUCT CATEGORIES -->
+<section id="categories">
+  <div class="cat-hd">
+    <div class="pill reveal" style="display:inline-flex"><span>Product Categories</span></div>
+    <h2 class="sh2 reveal d1">Everything We <em>Manufacture</em></h2>
+    <p class="sec-sub reveal d2">Explore our wide range — all available for custom manufacturing, private labeling, and bulk orders at wholesale rates.</p>
+  </div>
+
+  <div class="cat-tabs reveal d2">
+    <button class="ctab active" data-cat="all">All Products</button>
+    <button class="ctab" data-cat="skin">Skin Care</button>
+    <button class="ctab" data-cat="hair">Hair Care</button>
+    <button class="ctab" data-cat="makeup">Makeup</button>
+    <button class="ctab" data-cat="body">Body Care</button>
+    <button class="ctab" data-cat="pack">Packaging</button>
+  </div>
+
+  <div class="cat-grid reveal d3">
+
+    <!-- FEATURED - Skin Care (tall) -->
+    <div class="ccard feat" data-cat="skin">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&h=900&fit=crop&auto=format&q=85" alt="Skin Care Range" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">⭐ Most Popular</span>
+        <div class="ccard-title">Skin Care Range</div>
+        <div class="ccard-desc">Serums, creams, moisturizers, toners & facial treatments — custom formulated for any skin type.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Skin%20Care%20products" class="ccard-cta" target="_blank">
+          Order Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
-    <div class="about-badge">
-      <strong>100%</strong>
-      <span>Client Satisfaction</span>
+
+    <!-- Face Serum -->
+    <div class="ccard" data-cat="skin">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&h=650&fit=crop&auto=format&q=85" alt="Face Serums" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Skin Care</span>
+        <div class="ccard-title">Face Serums</div>
+        <div class="ccard-desc">Vitamin C, Hyaluronic Acid, Niacinamide & more in your brand's bottles.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Face%20Serums" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
+
+    <!-- Hair Care -->
+    <div class="ccard" data-cat="hair">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?w=500&h=650&fit=crop&auto=format&q=85" alt="Hair Care" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Hair Care</span>
+        <div class="ccard-title">Hair Care Range</div>
+        <div class="ccard-desc">Shampoos, conditioners, oils, masks & growth treatments — private label ready.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Hair%20Care%20products" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Nail Paints -->
+    <div class="ccard" data-cat="makeup">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&h=650&fit=crop&auto=format&q=85" alt="Nail Paints" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Makeup</span>
+        <div class="ccard-title">Nail Paints</div>
+        <div class="ccard-desc">Wide shade range, gel & regular formula. Launch your own nail collection.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Nail%20Paints" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Body Lotion -->
+    <div class="ccard" data-cat="body">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=500&h=650&fit=crop&auto=format&q=85" alt="Body Lotion" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Body Care</span>
+        <div class="ccard-title">Body Lotions & Oils</div>
+        <div class="ccard-desc">Moisturizing lotions, whitening creams, massage oils & scrubs in bulk.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Body%20Lotion" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Packaging -->
+    <div class="ccard" data-cat="pack">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1585232351009-aa43f151a890?w=500&h=650&fit=crop&auto=format&q=85" alt="Packaging" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Packaging</span>
+        <div class="ccard-title">Bottles & Containers</div>
+        <div class="ccard-desc">Cream jars, serum bottles, lotion pumps, labels & stickers — all wholesale.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Packaging" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Face Cream -->
+    <div class="ccard" data-cat="skin">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500&h=650&fit=crop&auto=format&q=85" alt="Face Cream" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Skin Care</span>
+        <div class="ccard-title">Face Creams</div>
+        <div class="ccard-desc">Day & night creams, whitening, anti-aging & moisturizing in custom jars.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Face%20Creams" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Makeup -->
+    <div class="ccard" data-cat="makeup">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1512207736890-6ffed8a84e8d?w=500&h=650&fit=crop&auto=format&q=85" alt="Makeup" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Makeup</span>
+        <div class="ccard-title">Beauty & Makeup</div>
+        <div class="ccard-desc">Lip colors, foundations, highlighters & more — manufactured under your label.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Makeup%20products" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Body Scrub -->
+    <div class="ccard" data-cat="body">
+      <div class="ccard-img">
+        <img src="https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=500&h=650&fit=crop&auto=format&q=85" alt="Body Scrub" loading="lazy">
+        <div class="ccard-ov"></div>
+      </div>
+      <div class="ccard-body">
+        <span class="ccard-tag">Body Care</span>
+        <div class="ccard-title">Body Scrubs</div>
+        <div class="ccard-desc">Coffee, sugar & herbal scrubs — exfoliating formulas in custom branded packaging.</div>
+        <a href="https://wa.me/923289875672?text=I%20need%20Body%20Scrubs" class="ccard-cta" target="_blank">
+          Enquire <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <div class="services-top">
-    <div class="services-top-left">
-      <div class="sec-eyebrow reveal">
-        <span class="sec-eyebrow-line"></span>
-        <span class="sec-eyebrow-text">What We Offer</span>
-      </div>
-      <h2 class="sec-title reveal reveal-delay-1">Complete <em>Service</em> Range</h2>
-    </div>
-    <p class="sec-sub reveal reveal-delay-2" style="max-width:340px;text-align:right">
-      From raw formulation to retail-ready products — we cover every step of your cosmetics journey.
-    </p>
+  <div class="svc-hd">
+    <div class="pill reveal" style="display:inline-flex"><span>What We Offer</span></div>
+    <h2 class="sh2 reveal d1">Complete <em>Service Range</em></h2>
+    <p class="sec-sub reveal d2" style="margin:0 auto;text-align:center">End-to-end cosmetics solutions — every step from idea to finished product.</p>
   </div>
-  <div class="services-grid">
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-card-num">01</div>
-      <div class="service-icon">🧴</div>
+  <div class="svc-grid">
+    <div class="svc reveal d1">
+      <div class="svc-n">01</div><div class="svc-ico">🧴</div>
       <h3>Product Manufacturing</h3>
-      <p>We manufacture a wide range of beauty and cosmetic products — serums, creams, lotions, facials, hair care, nail paints, and more, customized to your exact demand.</p>
-      <div class="service-tags">
-        <span class="service-tag">Serums</span>
-        <span class="service-tag">Creams</span>
-        <span class="service-tag">Lotions</span>
-        <span class="service-tag">Hair Care</span>
-      </div>
+      <p>Serums, creams, lotions, facials, hair care, nail paints and more — custom manufactured to your exact specifications and demand.</p>
+      <div class="chips"><span class="chip">Serums</span><span class="chip">Creams</span><span class="chip">Lotions</span></div>
     </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-card-num">02</div>
-      <div class="service-icon">📦</div>
-      <h3>Bulk & Wholesale Orders</h3>
-      <p>Need large quantities at competitive prices? We provide bulk orders at wholesale rates — ideal for brand owners, salons, online sellers, and resellers.</p>
-      <div class="service-tags">
-        <span class="service-tag">Low MOQ</span>
-        <span class="service-tag">Best Rates</span>
-        <span class="service-tag">Fast Delivery</span>
-      </div>
+    <div class="svc reveal d2">
+      <div class="svc-n">02</div><div class="svc-ico">📦</div>
+      <h3>Bulk & Wholesale</h3>
+      <p>Large quantity orders at competitive wholesale pricing — ideal for brand owners, salons, online sellers, and resellers of all sizes.</p>
+      <div class="chips"><span class="chip">Low MOQ</span><span class="chip">Best Rates</span></div>
     </div>
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-card-num">03</div>
-      <div class="service-icon">🏷️</div>
-      <h3>Branding & Private Label</h3>
-      <p>Launch your own cosmetic brand. We provide label design guidance, packaging selection, and manufacture products under your brand name — ready to market.</p>
-      <div class="service-tags">
-        <span class="service-tag">Label Design</span>
-        <span class="service-tag">Your Brand</span>
-        <span class="service-tag">Market Ready</span>
-      </div>
+    <div class="svc reveal d3">
+      <div class="svc-n">03</div><div class="svc-ico">🏷️</div>
+      <h3>Private Labeling</h3>
+      <p>Launch your own brand. We manufacture products under your name with custom packaging, labeling, and full design guidance.</p>
+      <div class="chips"><span class="chip">Your Brand</span><span class="chip">Market Ready</span></div>
     </div>
-    <div class="service-card reveal reveal-delay-4">
-      <div class="service-card-num">04</div>
-      <div class="service-icon">🫙</div>
-      <h3>Packaging & Containers</h3>
-      <p>Cream jars, serum bottles, lotion bottles, nail paint bottles, labels, stickers, and branded packaging — all available in bulk at affordable prices.</p>
-      <div class="service-tags">
-        <span class="service-tag">Jars</span>
-        <span class="service-tag">Bottles</span>
-        <span class="service-tag">Labels</span>
-        <span class="service-tag">Stickers</span>
-      </div>
+    <div class="svc reveal d4">
+      <div class="svc-n">04</div><div class="svc-ico">🫙</div>
+      <h3>Packaging Supply</h3>
+      <p>Cream jars, serum bottles, lotion pumps, nail paint bottles, labels and branded packaging available in bulk at affordable prices.</p>
+      <div class="chips"><span class="chip">Jars</span><span class="chip">Bottles</span><span class="chip">Labels</span></div>
     </div>
-    <div class="service-card reveal reveal-delay-5">
-      <div class="service-card-num">05</div>
-      <div class="service-icon">🎯</div>
+    <div class="svc reveal d5">
+      <div class="svc-n">05</div><div class="svc-ico">🎯</div>
       <h3>Business Guidance</h3>
-      <p>Not sure where to start? We offer investment and business guidance — which products to launch, how to minimize cost, and how to choose the right business model.</p>
-      <div class="service-tags">
-        <span class="service-tag">Strategy</span>
-        <span class="service-tag">Low Budget</span>
-        <span class="service-tag">Consulting</span>
-      </div>
+      <p>Startup consulting to help you choose the right products, minimize cost, and pick the best business model for your budget.</p>
+      <div class="chips"><span class="chip">Strategy</span><span class="chip">Consulting</span></div>
     </div>
-    <div class="service-card reveal reveal-delay-6">
-      <div class="service-card-num">06</div>
-      <div class="service-icon">✨</div>
+    <div class="svc reveal d6">
+      <div class="svc-n">06</div><div class="svc-ico">✨</div>
       <h3>Custom Formulations</h3>
-      <p>Have a unique idea? We create custom cosmetic mixtures and formulas based on your requirements — from concept to finished product, entirely your way.</p>
-      <div class="service-tags">
-        <span class="service-tag">Custom Mix</span>
-        <span class="service-tag">Any Formula</span>
-        <span class="service-tag">Unique Products</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRODUCTS & MOQ -->
-<section id="products">
-  <div class="products-header">
-    <div class="sec-eyebrow reveal">
-      <span class="sec-eyebrow-line"></span>
-      <span class="sec-eyebrow-text">Product Categories & MOQ</span>
-    </div>
-    <h2 class="sec-title reveal reveal-delay-1">What We <em>Manufacture</em></h2>
-    <p class="sec-sub reveal reveal-delay-2">Explore our full product range. Every category has a minimum order quantity to ensure best pricing and quality for your brand.</p>
-  </div>
-
-  <div class="product-categories-grid">
-
-    <!-- Skincare -->
-    <div class="cat-card reveal reveal-delay-1">
-      <span class="cat-icon">🌿</span>
-      <div class="cat-name">Skin Care</div>
-      <div class="cat-desc">Complete facial and skin treatment solutions for daily care routines and specialized treatments.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Face Wash</span>
-        <span class="cat-item-tag">Toner</span>
-        <span class="cat-item-tag">Face Scrub</span>
-        <span class="cat-item-tag">Brightening Cream</span>
-        <span class="cat-item-tag">Whitening Mask</span>
-        <span class="cat-item-tag">Night Cream</span>
-        <span class="cat-item-tag">Day Moisturizer</span>
-        <span class="cat-item-tag">Sunscreen SPF</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">50</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Serums & Treatments -->
-    <div class="cat-card reveal reveal-delay-2">
-      <span class="cat-icon">💧</span>
-      <div class="cat-name">Serums & Treatments</div>
-      <div class="cat-desc">Targeted active formulas for anti-aging, brightening, and advanced skin correction.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Vitamin C Serum</span>
-        <span class="cat-item-tag">Hyaluronic Serum</span>
-        <span class="cat-item-tag">Retinol Serum</span>
-        <span class="cat-item-tag">Niacinamide Serum</span>
-        <span class="cat-item-tag">Collagen Booster</span>
-        <span class="cat-item-tag">Eye Serum</span>
-        <span class="cat-item-tag">Kojic Acid Serum</span>
-        <span class="cat-item-tag">Acne Treatment</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">30</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Body Care -->
-    <div class="cat-card reveal reveal-delay-3">
-      <span class="cat-icon">🧖‍♀️</span>
-      <div class="cat-name">Body Care</div>
-      <div class="cat-desc">Nourishing lotions, oils, and body treatments for smooth, glowing skin from head to toe.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Body Lotion</span>
-        <span class="cat-item-tag">Body Butter</span>
-        <span class="cat-item-tag">Body Oil</span>
-        <span class="cat-item-tag">Body Scrub</span>
-        <span class="cat-item-tag">Stretch Mark Cream</span>
-        <span class="cat-item-tag">Tan Removal</span>
-        <span class="cat-item-tag">Hand Cream</span>
-        <span class="cat-item-tag">Foot Cream</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">50</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Hair Care -->
-    <div class="cat-card reveal reveal-delay-4">
-      <span class="cat-icon">💆‍♀️</span>
-      <div class="cat-name">Hair Care</div>
-      <div class="cat-desc">Complete hair care solutions from root to tip — for shine, growth, and strength.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Shampoo</span>
-        <span class="cat-item-tag">Hair Conditioner</span>
-        <span class="cat-item-tag">Hair Oil</span>
-        <span class="cat-item-tag">Hair Mask</span>
-        <span class="cat-item-tag">Hair Serum</span>
-        <span class="cat-item-tag">Anti-Dandruff</span>
-        <span class="cat-item-tag">Hair Growth Oil</span>
-        <span class="cat-item-tag">Scalp Treatment</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">50</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Makeup & Color -->
-    <div class="cat-card reveal reveal-delay-5">
-      <span class="cat-icon">💄</span>
-      <div class="cat-name">Makeup & Color</div>
-      <div class="cat-desc">Vibrant, long-lasting color cosmetics for every complexion and occasion.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Nail Paint</span>
-        <span class="cat-item-tag">Lip Gloss</span>
-        <span class="cat-item-tag">Lip Balm</span>
-        <span class="cat-item-tag">Foundation</span>
-        <span class="cat-item-tag">Blush</span>
-        <span class="cat-item-tag">Highlighter</span>
-        <span class="cat-item-tag">Eyeshadow</span>
-        <span class="cat-item-tag">BB Cream</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">100</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Salon & Facial Kits -->
-    <div class="cat-card reveal reveal-delay-6">
-      <span class="cat-icon">💅</span>
-      <div class="cat-name">Salon & Facial Kits</div>
-      <div class="cat-desc">Professional-grade kits for salons, parlors, and beauty academies — ready for retail or in-salon use.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Facial Kit (5-step)</span>
-        <span class="cat-item-tag">Gold Facial Kit</span>
-        <span class="cat-item-tag">Detan Kit</span>
-        <span class="cat-item-tag">Bleach Kit</span>
-        <span class="cat-item-tag">Manicure Kit</span>
-        <span class="cat-item-tag">Pedicure Kit</span>
-        <span class="cat-item-tag">Bridal Facial Kit</span>
-        <span class="cat-item-tag">Cleanup Kit</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">20</span>
-        <span class="moq-unit">kits / variant</span>
-      </div>
-    </div>
-
-    <!-- Fragrance & Deodorants -->
-    <div class="cat-card reveal reveal-delay-7">
-      <span class="cat-icon">🌸</span>
-      <div class="cat-name">Fragrance & Deodorants</div>
-      <div class="cat-desc">Custom-scented personal care products for a signature brand identity and all-day freshness.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Body Mist</span>
-        <span class="cat-item-tag">Deodorant Roll-On</span>
-        <span class="cat-item-tag">Perfume Oil</span>
-        <span class="cat-item-tag">Attar</span>
-        <span class="cat-item-tag">Spray Perfume</span>
-        <span class="cat-item-tag">Talcum Powder</span>
-        <span class="cat-item-tag">Scented Lotion</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">100</span>
-        <span class="moq-unit">units / product</span>
-      </div>
-    </div>
-
-    <!-- Custom / OEM -->
-    <div class="cat-card reveal reveal-delay-8">
-      <span class="cat-icon">⚗️</span>
-      <div class="cat-name">Custom & OEM</div>
-      <div class="cat-desc">Have a unique formula idea? We develop and manufacture fully bespoke products from scratch under your brand.</div>
-      <div class="cat-items">
-        <span class="cat-item-tag">Your Formula</span>
-        <span class="cat-item-tag">Custom Scent</span>
-        <span class="cat-item-tag">Custom Color</span>
-        <span class="cat-item-tag">Custom Texture</span>
-        <span class="cat-item-tag">R&D Support</span>
-        <span class="cat-item-tag">Sample First</span>
-        <span class="cat-item-tag">Flexible MOQ</span>
-      </div>
-      <div class="cat-moq">
-        <span class="moq-label">MOQ</span>
-        <span class="moq-value">Flexible</span>
-        <span class="moq-unit">— discuss with us</span>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- MOQ Summary Table -->
-  <div class="moq-section reveal">
-    <div class="moq-section-title">Minimum Order Quantities — Quick Reference</div>
-    <div class="moq-section-sub">All MOQs are per product variant. Bulk discounts apply beyond 3× MOQ. Contact us for exact pricing.</div>
-    <table class="moq-table">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>MOQ</th>
-          <th>Unit Type</th>
-          <th>Packaging Included</th>
-          <th>Label Included</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="moq-highlight">Skin Care (Creams, Moisturizers)</td>
-          <td><span class="moq-badge">50 units</span></td>
-          <td>30ml – 200ml jars/tubes</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Serums & Treatments</td>
-          <td><span class="moq-badge">30 units</span></td>
-          <td>15ml – 50ml dropper bottles</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Body Lotions & Oils</td>
-          <td><span class="moq-badge">50 units</span></td>
-          <td>100ml – 500ml bottles</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Hair Care Products</td>
-          <td><span class="moq-badge">50 units</span></td>
-          <td>100ml – 300ml bottles</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Nail Paints</td>
-          <td><span class="moq-badge">100 units</span></td>
-          <td>Standard nail paint bottles</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Makeup (Foundation, Blush, etc.)</td>
-          <td><span class="moq-badge">100 units</span></td>
-          <td>Varies by product</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Salon & Facial Kits</td>
-          <td><span class="moq-badge">20 kits</span></td>
-          <td>Multi-step kit sets</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Fragrance & Body Mist</td>
-          <td><span class="moq-badge">100 units</span></td>
-          <td>50ml – 200ml spray/roll-on</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-        <tr>
-          <td class="moq-highlight">Custom / OEM Formulations</td>
-          <td><span class="moq-badge">Negotiable</span></td>
-          <td>As per requirement</td>
-          <td>✅ Yes</td>
-          <td>✅ Yes</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- WHO IS IT FOR -->
-<section id="audience">
-  <div class="sec-eyebrow reveal">
-    <span class="sec-eyebrow-line"></span>
-    <span class="sec-eyebrow-text">Who Is This For?</span>
-  </div>
-  <h2 class="sec-title reveal reveal-delay-1">Perfect For <em>Every</em> Business Type</h2>
-  <p class="sec-sub reveal reveal-delay-2" style="max-width:520px">Our services support a wide range of entrepreneurs and businesses in the beauty industry — from day one to scaling up.</p>
-  <div class="audience-grid">
-    <div class="audience-card reveal reveal-delay-1">
-      <span class="audience-icon">🚀</span>
-      <h3>Brand Starters</h3>
-      <p>Want to launch your own cosmetics brand? We handle everything from formula to packaging under your brand name.</p>
-    </div>
-    <div class="audience-card reveal reveal-delay-2">
-      <span class="audience-icon">🛒</span>
-      <h3>Online Sellers</h3>
-      <p>Selling beauty products online? Get bulk cosmetics at wholesale prices and resell at a profit on any platform.</p>
-    </div>
-    <div class="audience-card reveal reveal-delay-3">
-      <span class="audience-icon">💅</span>
-      <h3>Salons & Parlors</h3>
-      <p>Get high-quality skincare, facial, and beauty products manufactured specifically for your salon or beauty parlor.</p>
-    </div>
-    <div class="audience-card reveal reveal-delay-4">
-      <span class="audience-icon">📦</span>
-      <h3>Resellers & Wholesalers</h3>
-      <p>Looking to resell or distribute? Access wholesale pricing on all cosmetic product categories with low MOQ.</p>
-    </div>
-    <div class="audience-card reveal reveal-delay-5">
-      <span class="audience-icon">💡</span>
-      <h3>Entrepreneurs on a Budget</h3>
-      <p>Even with a small investment, we help you start a cosmetics business the right way with the right products.</p>
-    </div>
-    <div class="audience-card reveal reveal-delay-6">
-      <span class="audience-icon">🏪</span>
-      <h3>Existing Businesses</h3>
-      <p>Already running a beauty business? Scale up with bulk orders, better packaging, and your own private label.</p>
+      <p>Unique idea? We create custom cosmetic blends and formulas from scratch — entirely tailored to your vision and target market.</p>
+      <div class="chips"><span class="chip">Custom Mix</span><span class="chip">Unique Formula</span></div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
 <section id="process">
-  <div class="sec-eyebrow reveal" style="justify-content:center">
-    <span class="sec-eyebrow-line"></span>
-    <span class="sec-eyebrow-text">How It Works</span>
-  </div>
-  <h2 class="sec-title reveal reveal-delay-1" style="text-align:center">Simple <em>4-Step</em> Process</h2>
-  <p class="sec-sub reveal reveal-delay-2" style="max-width:460px;margin:0 auto;text-align:center">From your idea to finished product — here's how we work together seamlessly.</p>
-  <div class="process-steps">
-    <div class="process-line"></div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="step-circle">01</div>
+  <div class="pill reveal" style="display:inline-flex;margin:0 auto 1rem"><span>How It Works</span></div>
+  <h2 class="sh2 reveal d1" style="text-align:center">Simple <em>4-Step</em> Process</h2>
+  <p class="sec-sub reveal d2" style="text-align:center;margin:0 auto">From your first message to a finished product — here's exactly how we work together.</p>
+  <div class="proc-row">
+    <div class="pr reveal d1">
+      <div class="pr-c">01</div>
       <h4>Consult</h4>
-      <p>Contact us via WhatsApp. Share your idea, budget, and product requirements.</p>
+      <p>Contact via WhatsApp or email. Share your idea, product type, budget and requirements.</p>
     </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="step-circle">02</div>
+    <div class="pr reveal d2">
+      <div class="pr-c">02</div>
       <h4>Plan</h4>
-      <p>We discuss product type, formula, quantity, packaging, and pricing in detail.</p>
+      <p>We discuss formula, quantity, packaging options, pricing, and finalize all details clearly.</p>
     </div>
-    <div class="process-step reveal reveal-delay-3">
-      <div class="step-circle">03</div>
+    <div class="pr reveal d3">
+      <div class="pr-c">03</div>
       <h4>Produce</h4>
-      <p>Your product is manufactured, labeled, and packaged to your exact specification.</p>
+      <p>Your product is manufactured, labeled with your branding, and quality-checked before packing.</p>
     </div>
-    <div class="process-step reveal reveal-delay-4">
-      <div class="step-circle">04</div>
+    <div class="pr reveal d4">
+      <div class="pr-c">04</div>
       <h4>Deliver</h4>
-      <p>Your order is finalized and delivered. Ready to sell, launch, or distribute.</p>
+      <p>Order packed and delivered. Your brand is ready to sell or launch to market.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section id="audience">
+  <div class="aud-hd">
+    <div class="pill reveal"><span>Who Is This For?</span></div>
+    <h2 class="sh2 reveal d1" style="margin-top:0.8rem">Perfect For <em>Every</em> Business Type</h2>
+    <p class="sec-sub reveal d2">Our services support a wide range of entrepreneurs and businesses in the beauty industry.</p>
+  </div>
+  <div class="aud-grid">
+    <div class="acard reveal d1"><div class="aic">🚀</div><h3>Brand Starters</h3><p>Launch your own cosmetics brand — we handle everything from formula to packaged product under your name.</p></div>
+    <div class="acard reveal d2"><div class="aic">🛒</div><h3>Online Sellers</h3><p>Selling on Instagram or Daraz? Get bulk cosmetics at wholesale prices and maximize your profit margins.</p></div>
+    <div class="acard reveal d3"><div class="aic">💅</div><h3>Salons & Parlors</h3><p>High-quality skincare and beauty products manufactured exclusively for your salon at professional rates.</p></div>
+    <div class="acard reveal d4"><div class="aic">📦</div><h3>Resellers & Wholesalers</h3><p>Access full wholesale pricing across all cosmetic product categories for reselling or distribution.</p></div>
+    <div class="acard reveal d5"><div class="aic">💡</div><h3>Budget Entrepreneurs</h3><p>Even with a small investment, we help you launch your beauty business the right way with the right products.</p></div>
+    <div class="acard reveal d6"><div class="aic">🏪</div><h3>Existing Businesses</h3><p>Scale with better packaging, your own private label, and bulk rates that significantly cut your costs.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="t-hd">
+    <div class="pill reveal" style="display:inline-flex;margin:0 auto 1rem"><span>Client Stories</span></div>
+    <h2 class="sh2 reveal d1">What Clients <em>Say</em></h2>
+  </div>
+  <div class="tgrid">
+    <div class="tc reveal d1">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"Sitara helped me launch my skincare brand from zero. The serum formula was exactly what I wanted, and the private label packaging looked so professional. My customers absolutely love it!"</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&auto=format&q=80" alt="Ayesha" loading="lazy"></div>
+        <div><div class="tc-name">Ayesha Malik</div><div class="tc-role">Brand Owner · Lahore</div></div>
+      </div>
+    </div>
+    <div class="tc reveal d2">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"I ordered bulk hair care products for my salon and the quality was outstanding. Wholesale rates were very reasonable and delivery was on time. Will definitely order again and again!"</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&auto=format&q=80" alt="Sana" loading="lazy"></div>
+        <div><div class="tc-name">Sana Raza</div><div class="tc-role">Salon Owner · Karachi</div></div>
+      </div>
+    </div>
+    <div class="tc reveal d3">
+      <div class="tc-stars">★★★★★</div>
+      <p class="tc-text">"As an online reseller, finding Sitara was a game-changer. She guided me on which products to start with, got me amazing packaging, and the profit margin is fantastic. Highly recommend!"</p>
+      <div class="tc-auth">
+        <div class="tc-av"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&auto=format&q=80" alt="Fatima" loading="lazy"></div>
+        <div><div class="tc-name">Fatima Noor</div><div class="tc-role">Online Reseller · Islamabad</div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div>
-    <div class="sec-eyebrow reveal">
-      <span class="sec-eyebrow-line"></span>
-      <span class="sec-eyebrow-text">Get In Touch</span>
-    </div>
-    <h2 class="sec-title reveal reveal-delay-1">Ready to Start Your <em>Beauty Brand?</em></h2>
-    <p class="sec-sub reveal reveal-delay-2">Reach out for a free consultation. We'll discuss your requirements and create a clear plan to launch or scale your brand.</p>
-    <div class="contact-cards reveal reveal-delay-3">
-      <a href="https://wa.me/923289875672" class="contact-card" target="_blank">
-        <div class="contact-card-icon">📱</div>
-        <div class="contact-card-text">
-          <span>WhatsApp / Phone</span>
-          <strong>+92 328 9875672</strong>
-        </div>
+  <div class="ct-l">
+    <div class="pill reveal"><span>Get In Touch</span></div>
+    <h2 class="sh2 reveal d1">Ready to Start Your<br><em>Cosmetics Journey?</em></h2>
+    <p class="sec-sub reveal d2">Reach out for a free consultation. We'll discuss your requirements and create a clear plan to launch or scale your beauty brand — no commitment needed.</p>
+    <div class="ct-rows reveal d3">
+      <a href="https://wa.me/923289875672" class="crow" target="_blank">
+        <div class="crow-ic">📱</div>
+        <div class="crow-t"><span>WhatsApp / Phone</span><strong>+92 328 9875672</strong></div>
       </a>
-      <a href="mailto:sitaraashraf007@gmail.com" class="contact-card">
-        <div class="contact-card-icon">✉️</div>
-        <div class="contact-card-text">
-          <span>Email</span>
-          <strong>sitaraashraf007@gmail.com</strong>
-        </div>
+      <a href="mailto:sitaraashraf007@gmail.com" class="crow">
+        <div class="crow-ic">✉️</div>
+        <div class="crow-t"><span>Email Address</span><strong>sitaraashraf007@gmail.com</strong></div>
       </a>
     </div>
-    <p class="contact-urdu reveal reveal-delay-4">آج ہی رابطہ کریں اور اپنا برانڈ شروع کریں 🌟</p>
+    <p class="ct-urdu reveal d4">آج ہی رابطہ کریں — اپنا خوبصورت برانڈ شروع کریں 🌟</p>
   </div>
-  <div class="contact-right reveal reveal-delay-2">
-    <a href="https://wa.me/923289875672?text=Hello%20Sitara!%20I%20am%20interested%20in%20your%20cosmetics%20services.%20Can%20we%20discuss%20my%20requirements%3F" class="wa-cta" target="_blank">
-      <svg viewBox="0 0 24 24" fill="white">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/>
-      </svg>
-      <strong>Start on WhatsApp</strong>
-      <small>Tap to open a direct conversation</small>
+  <div class="ct-r">
+    <a href="https://wa.me/923289875672?text=Hello%20Sitara!%20I%20am%20interested%20in%20your%20cosmetics%20services.%20Can%20we%20discuss%20my%20requirements%3F" class="wa-box" target="_blank">
+      <div class="wa-logo">
+        <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/></svg>
+      </div>
+      <h3>Start on WhatsApp</h3>
+      <p>Tap to open a direct conversation with Sitara. Discuss your requirements, get pricing, and place your order — all on WhatsApp.</p>
+      <div class="wa-btn-inner">Chat Now — It's Free</div>
+      <p class="wa-num">+92 328 9875672</p>
     </a>
-    <p class="contact-note">Typically responds within a few hours</p>
+    <a href="mailto:sitaraashraf007@gmail.com" class="email-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      sitaraashraf007@gmail.com
+    </a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Sitara <em>Ashraf</em></div>
-  <p>© 2025 Sitara Ashraf Cosmetics. All rights reserved.</p>
-  <div class="footer-links">
+  <div class="fbrand">Sitara <span>Ashraf</span></div>
+  <p>© 2025 Sitara Ashraf Cosmetics · All rights reserved.</p>
+  <div class="flinks">
+    <a href="#about">About</a>
+    <a href="#categories">Products</a>
     <a href="#services">Services</a>
-    <a href="#products">Products</a>
     <a href="#contact">Contact</a>
   </div>
 </footer>
 
 <!-- FLOATING WA -->
-<a href="https://wa.me/923289875672" class="float-wa" target="_blank" title="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/>
-  </svg>
+<a href="https://wa.me/923289875672?text=Hello%20Sitara!%20I%20am%20interested%20in%20your%20cosmetics%20services." class="fwa" target="_blank" title="Chat with Sitara on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.847L.057 23.572a.5.5 0 00.622.598l5.84-1.52A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 01-5.127-1.425l-.367-.218-3.81.993.999-3.733-.24-.38A9.861 9.861 0 012.1 12C2.1 6.529 6.529 2.1 12 2.1S21.9 6.529 21.9 12 17.471 21.9 12 21.9z"/></svg>
 </a>
 
 <script>
-  // Nav scroll
-  const nav = document.getElementById('mainNav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
+/* ── THEME TOGGLE ── */
+const html = document.documentElement;
+const btn = document.getElementById('themeBtn');
+const stored = localStorage.getItem('sa-theme') || 'dark';
+html.setAttribute('data-theme', stored);
+btn.textContent = stored === 'dark' ? '☀️' : '🌙';
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+btn.addEventListener('click', () => {
+  const current = html.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  btn.textContent = next === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('sa-theme', next);
+});
+
+/* ── NAV SCROLL ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── CATEGORY FILTER ── */
+const fadeIn = document.createElement('style');
+fadeIn.textContent = '@keyframes cfi{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}';
+document.head.appendChild(fadeIn);
+
+document.querySelectorAll('.ctab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const cat = tab.dataset.cat;
+    let delay = 0;
+    document.querySelectorAll('.ccard').forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      if (match) {
+        card.style.display = 'block';
+        card.style.animation = 'none';
+        card.offsetHeight;
+        card.style.animation = `cfi 0.45s ${delay * 0.06}s ease forwards`;
+        delay++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+
+/* ── COUNTER ANIMATION ── */
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const dur = 1800;
+  const step = 16;
+  const inc = target / (dur / step);
+  const timer = setInterval(() => {
+    start += inc;
+    if (start >= target) { el.textContent = target + suffix; clearInterval(timer); }
+    else { el.textContent = Math.floor(start) + suffix; }
+  }, step);
+}
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCount(e.target, parseInt(e.target.dataset.val), e.target.dataset.suf || '');
+      countObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.hs-num').forEach((el, i) => {
+  const vals = [500, 5, 100, 6];
+  const sufs = ['+', '+', '%', ''];
+  el.dataset.val = vals[i];
+  el.dataset.suf = sufs[i];
+  el.textContent = '0';
+  countObs.observe(el);
+});
 </script>
 </body>
 </html>
